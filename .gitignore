@@ -1,0 +1,14 @@
+# Ignore data directory
+1_data
+
+# Ignore results directory
+4_results
+
+# Ignore environments directory
+5_environnements
+
+# Ignore containers directory
+6_Containers
+
+# Ignore miscellaneous test files
+test_divers
