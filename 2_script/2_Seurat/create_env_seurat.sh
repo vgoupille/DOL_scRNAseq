@@ -6,7 +6,7 @@
 
 . /local/env/envconda.sh
 
-conda create -p /home/genouest/cnrs_umr6553/vgoupille/Pipeline/env_seurat r-seurat==3.0.2 -y
+conda create -p /home/genouest/cnrs_umr6553/vgoupille/DOL_scRNAseq/5_environnements/env_seurat r-seurat==3.0.2 -y
 
 
 #https://biocontainers.pro/tools/r-seurat
