@@ -11,4 +11,9 @@
 #singularity shell /home/genouest/cnrs_umr6553/vgoupille/DOL_scRNAseq/6_Containers/seurat.sif 
 #Rscript 2_script/2_Seurat/seurat.R
 
-singularity exec /home/genouest/cnrs_umr6553/vgoupille/DOL_scRNAseq/6_Containers/seurat.sif Rscript 2_script/2_Seurat/seurat.R
+
+#Etape 1 :
+#singularity exec /home/genouest/cnrs_umr6553/vgoupille/DOL_scRNAseq/6_Containers/seurat.sif Rscript 2_script/2_Seurat/seurat.R
+
+#Etape 2 :
+singularity exec /home/genouest/cnrs_umr6553/vgoupille/DOL_scRNAseq/6_Containers/seurat.sif Rscript 2_script/2_Seurat/read_seurat.R
