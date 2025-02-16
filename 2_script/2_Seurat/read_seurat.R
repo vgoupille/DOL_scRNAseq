@@ -6,6 +6,8 @@
 # Charger les bibliothèques nécessaires
 library(Seurat)
 library (ggplot2)
+library(dplyr)
+library(patchwork)
 # Read Seurat object
 
 #4_results/1_script_results/2_resuts_seurat/DOL_scRNAseq_filtered.rds
@@ -13,12 +15,13 @@ library (ggplot2)
 
 #DOL_scRNAseq_filtered  <- readRDS("4_results/1_script_results/2_resuts_seurat/DOL_scRNAseq_filtered.rds")
 
-DOL_scRNAseq_raw  <- readRDS("4_results/1_script_results/2_resuts_seurat/DOL_scRNAseq_raw.rds")
-
+#DOL_scRNAseq_raw  <- readRDS("4_results/1_script_results/2_resuts_seurat/DOL_scRNAseq_raw.rds")
+pmbc <- readRDS("4_results/1_script_results/2_resuts_seurat/DOL_scRNAseq_raw.rds")
 
 # Print head of the object
 #head(DOL_scRNAseq_filtered, 100)
-head(DOL_scRNAseq_raw, 100) # je veux les 100 premières lignes
+#head(DOL_scRNAseq_raw, 100) # je veux les 100 premières lignes
+head(pmbc, 100) # je veux les 100 premières lignes
 
 # Attaching SeuratObject
 #                            orig.ident nCount_RNA nFeature_RNA
@@ -46,9 +49,11 @@ head(DOL_scRNAseq_raw, 100) # je veux les 100 premières lignes
 
 # dans cette experimentation seulement 16 "cellules" => regroupe plusieurs cellules à cause de l'histoire des barcodes
 
+# Print the object info 
+pmbc
+#An object of class Seurat 
+#6248 features across 16 samples within 1 assay 
+#Active assay: RNA (6248 features, 0 variable features)
 
-# Print the number of cells and genes
-cat("Number of cells in the object: ", length(DOL_scRNAseq_raw), "\n")
-cat("Number of genes in the object: ", nrow(DOL_scRNAseq_raw), "\n")
-
-# Plot the number of genes per cell
+# Lets examine a few genes in the first thirty cells
+#pmbc[c ("NfuA", "soxR"), 1:16]

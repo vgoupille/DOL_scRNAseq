@@ -12,3 +12,9 @@
 
 # Ignore miscellaneous test files
 test_divers
+
+7_Article
+
+*.err
+*.log
+*.out
