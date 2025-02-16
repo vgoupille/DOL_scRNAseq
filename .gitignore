@@ -13,7 +13,9 @@
 # Ignore miscellaneous test files
 test_divers
 
-7_Article
+# Ignore 7_Article except the script directory inside
+7_Article/*
+!7_Article/script/
 
 *.err
 *.log
