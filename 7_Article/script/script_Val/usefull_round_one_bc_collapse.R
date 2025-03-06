@@ -1,8 +1,8 @@
 # Type: function
 
-round_one_bc_collapse <- function(data, threshold, csv_file){
+round_one_bc_collapse <- function(data, threshold, csv_file_filter){
   
-  r6pt <- read.csv(csv_file)
+  r6pt <- read.csv(csv_file_filter)
   r6pt <- r6pt$x
   
   temp <- data[,r6pt]
@@ -33,3 +33,5 @@ round_one_bc_collapse <- function(data, threshold, csv_file){
  
  return(temp)
 }
+
+#'7_Article/script/utile_bact/r6ptorderedbcs.csv' pour csv_file path

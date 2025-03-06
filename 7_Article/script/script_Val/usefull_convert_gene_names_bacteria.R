@@ -4,13 +4,13 @@
 
 # Ce code convertit les noms de gènes bactériens en utilisant une table de conversion stockée dans un fichier CSV. 
 
-convert_gene_names_bacteria <- function(genes, conversion_file){
+convert_gene_names_bacteria <- function(genes, conversion_file_gene_names){
   # genes: vecteur de noms de gènes bactériens
-  # conversion_file: chemin vers le fichier CSV contenant la table de conversion
+  # conversion_file_gene_name: chemin vers le fichier CSV contenant la table de conversion
 
 
   # Lire le fichier CSV passé en argument
-  conversion_table <- read.csv(conversion_file)
+  conversion_table <- read.csv(conversion_file_gene_names)
   new.features <- c()
   
   for (i in 1:length(genes)){
