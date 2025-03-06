@@ -57,7 +57,7 @@ print (matrix_file)
 
 expression_matrix <- ReadSTARsolo(data.dir = "4_results/1_script_results/1_results_STARsolo/starsolo_output/Solo.out/GeneFull/filtered")
 
-seurat_object_filtered <- CreateSeuratObject(counts = expression_matrix, project = "DOL_scRNAseq_filtered") # Create a Seurat object from the expression matrix and assign it to the variable seurat_object , project name is DOL_scRNAseq_filtered
+seurat_object_filtered <- (counts = expression_matrix, project = "DOL_scRNAseq_filtered") # Create a Seurat object from the expression matrix and assign it to the variable seurat_object , project name is DOL_scRNAseq_filtered
 
 # Sauvegarder l'objet Seurat filtré
 saveRDS(seurat_object_filtered, file = "/home/genouest/cnrs_umr6553/vgoupille/DOL_scRNAseq/4_results/1_script_results/2_resuts_seurat/DOL_scRNAseq_filtered.rds")
