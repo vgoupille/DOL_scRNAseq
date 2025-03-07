@@ -29,6 +29,9 @@ source("7_Article/script/script_Val/usefull_round_one_bc_collapse.R" )
 #prend en entrée un csv et data 
 
 
+#script pour assigner les métadonnées aux cellules pour M14 et M15
+source("7_Article/script/script_Val/usefull_assign_metadata.R")
+
 lsf.str()  # listes les fonctions importées 
 
 
@@ -173,4 +176,5 @@ print(dim(SO@meta.data))  # Vérifie le nombre de cellules et de colonnes
 
 print("Noms des colonnes des métadonnées :")
 print(colnames(SO@meta.data))  # Liste les colonnes disponibles dans les métadonnées
+return(SO)
 }

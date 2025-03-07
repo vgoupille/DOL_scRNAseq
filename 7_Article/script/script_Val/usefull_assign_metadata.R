@@ -48,20 +48,61 @@ assign_metadata_OD_M15 <- function(raw.genefull) {
 
 
 
-assign_metadata_OD_M14 <- function(raw.genefull) {
-  print(sum(duplicated(rownames(raw.genefull@meta.data))))  # Vérifie les doublons avant fusion
+# assign_metadata_OD_M14 <- function(raw.genefull) {
+#   print(sum(duplicated(rownames(raw.genefull@meta.data))))  # Vérifie les doublons avant fusion
 
-  # Vérification que `raw.genefull` est un objet Seurat
+#   # Vérification que `raw.genefull` est un objet Seurat
+#   if (!inherits(raw.genefull, "Seurat")) {
+#     stop("Erreur : L'objet fourni n'est pas un objet Seurat.")
+#   }
+
+#   # Vérification et ajout de la colonne `well` si absente
+#   if (!"well" %in% colnames(raw.genefull@meta.data)) {
+#     raw.genefull@meta.data$well <- rownames(raw.genefull@meta.data)
+#   }
+
+#   # Définition des conditions avec `paste0`
+#   conditions <- list(
+#     'OD0.5' = paste0('A', 1:8),
+#     'OD1.0' = c(paste0('A', 9:12), paste0('B', 1:4)),
+#     'OD1.7' = paste0('B', 5:12),
+#     'OD2.0' = paste0('C', 1:8),
+#     'OD2.8' = c(paste0('C', 9:12), paste0('D', 1:4)),
+#     'OD3.2' = paste0('D', 5:12)
+#   )
+
+#   # Assigner les conditions directement aux métadonnées
+#   raw.genefull@meta.data <- raw.genefull@meta.data %>%
+#     mutate(cond = case_when(
+#       well %in% conditions$OD0.5 ~ "OD0.5",
+#       well %in% conditions$OD1.0 ~ "OD1.0",
+#       well %in% conditions$OD1.7 ~ "OD1.7",
+#       well %in% conditions$OD2.0 ~ "OD2.0",
+#       well %in% conditions$OD2.8 ~ "OD2.8",
+#       well %in% conditions$OD3.2 ~ "OD3.2",
+#       TRUE ~ NA_character_
+#     ))
+
+#   print(sum(duplicated(rownames(raw.genefull@meta.data))))  # Vérifie les doublons après fusion
+#   return(raw.genefull)
+# }
+
+
+
+assign_metadata_OD_M14 <- function(raw.genefull) {
+  # First check if raw.genefull is a Seurat object
   if (!inherits(raw.genefull, "Seurat")) {
     stop("Erreur : L'objet fourni n'est pas un objet Seurat.")
   }
-
-  # Vérification et ajout de la colonne `well` si absente
+  
+  # Verify that the well column exists
   if (!"well" %in% colnames(raw.genefull@meta.data)) {
-    raw.genefull@meta.data$well <- rownames(raw.genefull@meta.data)
+    stop("Erreur : La colonne 'well' n'existe pas dans les métadonnées.")
   }
-
-  # Définition des conditions avec `paste0`
+  
+  print(sum(duplicated(rownames(raw.genefull@meta.data))))  # Check duplicates before merging
+  
+  # Define conditions
   conditions <- list(
     'OD0.5' = paste0('A', 1:8),
     'OD1.0' = c(paste0('A', 9:12), paste0('B', 1:4)),
@@ -70,10 +111,10 @@ assign_metadata_OD_M14 <- function(raw.genefull) {
     'OD2.8' = c(paste0('C', 9:12), paste0('D', 1:4)),
     'OD3.2' = paste0('D', 5:12)
   )
-
-  # Assigner les conditions directement aux métadonnées
+  
+  # Assign conditions to a new column called DO instead of cond
   raw.genefull@meta.data <- raw.genefull@meta.data %>%
-    mutate(cond = case_when(
+    mutate(DO = case_when(
       well %in% conditions$OD0.5 ~ "OD0.5",
       well %in% conditions$OD1.0 ~ "OD1.0",
       well %in% conditions$OD1.7 ~ "OD1.7",
@@ -82,8 +123,7 @@ assign_metadata_OD_M14 <- function(raw.genefull) {
       well %in% conditions$OD3.2 ~ "OD3.2",
       TRUE ~ NA_character_
     ))
-
-  print(sum(duplicated(rownames(raw.genefull@meta.data))))  # Vérifie les doublons après fusion
+  
+  print(sum(duplicated(rownames(raw.genefull@meta.data))))  # Check duplicates after merging
   return(raw.genefull)
 }
-

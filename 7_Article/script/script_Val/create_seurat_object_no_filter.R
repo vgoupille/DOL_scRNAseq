@@ -37,11 +37,10 @@ source ("7_Article/script/script_Val/usefull_create_seurat_object_from_seq_files
 #Gene or genefull (ici GeneFull : Résultats similaires à Gene/, mais en incluant **toutes les régions des gènes** et pas seulement les exons)) 
 #raw or filtered data (ici raw : pas de préfiltrage StarSolo)
 
-# Replica n°1 : M15 (GEO61)
-replica1 <- '7_Article/data/data_osf/GEO061'
-# Replica n°2 : M14 (GEO60)
-replica2 <- '7_Article/data/data_osf/GEO060'
-
+# Replica n°1 : M15 (GEO661)
+replica1 <- '7_Article/data/data_osf/GEO661'
+# Replica n°2 : M14 (GEO660)
+replica2 <- '7_Article/data/data_osf/GEO660'
 
 
 # fichier de ribosomes
