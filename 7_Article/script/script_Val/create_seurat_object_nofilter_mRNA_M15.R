@@ -71,7 +71,7 @@ cat("📄 Enregistrement des graphiques dans :", pdf_output_path, "\n")
 M15_mRNA_nofilter  <- create_seurat_object_from_seq_files(
     data_dir = replica1, 
     sublibrary ='M15',
-    threshold = 0.99, 
+    threshold = 0, 
     ribosome_file = path_ribosome_file,
     conversion_file_gene_names = path_conversion_file_gene_names, csv_file_filter = path_csv_file_filter,
     exclude_types = c('rRNA', 'tRNA'),
