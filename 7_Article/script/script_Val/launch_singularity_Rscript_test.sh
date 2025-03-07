@@ -13,7 +13,6 @@
 # Exécuter le script R dans le conteneur 
 
 #script.R est le script R à exécuter de test 
-#singularity exec 6_Containers/shortcakelight.sif Rscript 7_Article/script/script_Val/script.R
+singularity exec 6_Containers/shortcakelight.sif Rscript 7_Article/script/script_Val/script.R
 
 
-singularity exec 6_Containers/shortcakelight.sif Rscript 7_Article/script/script_Val/create_seurat_object_no_filter.R

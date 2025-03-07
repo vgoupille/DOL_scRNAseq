@@ -81,11 +81,12 @@ M15_mRNA_nofilter  <- create_seurat_object_from_seq_files(
 
 # Fermer le fichier PDF pour sauvegarder les graphiques
 dev.off()
+cat("✅ Les graphiques ont été sauvegardés dans", pdf_output_path, "\n")
 
 # Sauvegarde de l'objet Seurat
 saveRDS(M15_mRNA_nofilter, "7_Article/results/Seurat/M15_mRNA_nofilter.rds")
 
-cat("✅ Les graphiques ont été sauvegardés dans", pdf_output_path, "\n")
+
 
 # Chemin du fichier sauvegardé
 file_path <- "7_Article/results/Seurat/M15_mRNA_nofilter.rds"

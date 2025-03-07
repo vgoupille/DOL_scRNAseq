@@ -49,6 +49,25 @@ path_conversion_file_gene_names <- '7_Article/script/utile_bact/bacteria_gene_co
 # fichier de filtre des barcodes (cellules)
 path_csv_file_filter <- '7_Article/script/utile_bact/r6ptorderedbcs.csv'
 
+# Définir le chemin du répertoire
+plots_dir <- "7_Article/results/plots/"
+
+# Créer le répertoire si nécessaire
+if (!dir.exists(plots_dir)) {
+  dir.create(plots_dir)
+}
+
+# Définir le chemin du fichier PDF de sortie
+pdf_output_path <- paste0(plots_dir, "M14_mRNA_all_plots.pdf")
+
+
+# Ouvrir un fichier PDF pour capturer tous les graphiques
+pdf(pdf_output_path, width = 8, height = 6)
+
+cat("📄 Enregistrement des graphiques dans :", pdf_output_path, "\n")
+
+
+
 
 M14_mRNA_nofilter  <- create_seurat_object_from_seq_files(
     data_dir = replica2, 
@@ -61,6 +80,9 @@ M14_mRNA_nofilter  <- create_seurat_object_from_seq_files(
     #min.features = 5 #min.features permet de filtrer les gènes qui sont exprimés dans un nombre de cellules supérieur à min.features
     )
 
+# Fermer le fichier PDF pour sauvegarder les graphiques
+dev.off()
+cat("✅ Les graphiques ont été sauvegardés dans", pdf_output_path, "\n")
 
 # Sauvegarde de l'objet Seurat
 saveRDS(M14_mRNA_nofilter, "7_Article/results/Seurat/M14_mRNA_nofilter.rds")
