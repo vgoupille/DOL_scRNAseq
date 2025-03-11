@@ -1,5 +1,5 @@
 # Utiliser une version spécifique de l'image de base pour garantir la reproductibilité
-FROM rocker/r-ver
+FROM rocker/r-ver:latest
 
 # Mettre à jour le système et installer les dépendances de base de manière sécurisée
 RUN apt-get update && apt-get install -y \
@@ -45,4 +45,4 @@ RUN /opt/conda/envs/myenv/bin/python -m ipykernel install --user --name=myenv --
 RUN /opt/conda/envs/otherenv/bin/python -m ipykernel install --user --name=otherenv --display-name "Python (otherenv)"
 
 # Définir la commande par défaut pour lancer Jupyter Notebook
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--allow-root"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root"]
