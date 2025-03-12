@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-- jupyterlab=4.3.5
+#- jupyterlab=4.3.5
 - python=3.13.2
 - star=2.7.11b
 - cufflinks=0.17.3
