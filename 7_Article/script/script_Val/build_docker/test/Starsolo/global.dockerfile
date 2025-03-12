@@ -29,6 +29,9 @@ RUN conda env create -f /tmp/python_environment.yml -n myenv_Python && \
     conda clean --all --yes && \
     rm /tmp/python_environment.yml /tmp/r_environment.yml /tmp/starsolo_environment.yml
 
+# Install JupyterLab in the base environment
+RUN conda install -n base -c conda-forge jupyterlab=4.3.5
+
 # Install R packages using renv
 RUN Rscript /tmp/install.R && rm /tmp/install.R
 
