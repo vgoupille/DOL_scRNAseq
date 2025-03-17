@@ -8,8 +8,19 @@ library (Seurat)
 path_RNA_combined  <- "7_Article/results/tab_seurat_correct/RNA_combined.rds"
 RNA_combined <- readRDS(path_RNA_combined)
 
+
+#method to combine the layers of the Seurat object
+# https://satijalab.github.io/seurat-object/reference/SplitLayers.html
+
+Assays(RNA_combined)  # Pour voir les assays disponibles
+Layers(RNA_combined) # check the layers
+
+
 # Joindre les couches pour obtenir une seule matrice d'expression
-combined_seurat_join[["RNA"]] <- JoinLayers(RNA_combined)
+RNA_combined[["RNA"]] <- JoinLayers(RNA_combined[["RNA"]])
+
+
+RNA_combined
 
 
 # Chemin du fichier a sauvegarder
@@ -18,7 +29,7 @@ file_path <- "7_Article/results/tab_seurat_correct/RNA_combined_join.rds"
 
 
 # Sauvegarder l'objet Seurat
-saveRDS(combined_seurat_join, file_path)
+saveRDS(RNA_combined, file_path)
 
 
 
